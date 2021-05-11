@@ -87,7 +87,7 @@ fn main() {
         my_field.scent_decrease();
         my_population.add_scent_to_field(&mut my_field);
         my_population.paint(&mut canvas, scale);
-        my_population.reborn_of_old_ants(2000, start, &mut canvas, scale);
+        my_population.reborn_of_old_ants(10000, start, &mut canvas, scale);
         canvas.present();
         for event in event_pump.poll_iter() {
             match event {

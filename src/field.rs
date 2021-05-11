@@ -50,12 +50,12 @@ impl Field {
     pub fn scent_decrease(&mut self) {
         self.food_scent_map.par_iter_mut().for_each(|map_| {
             map_.par_map_inplace(|x| {
-                *x *= 0.95;
+                *x *= 0.995;
             })
         });
         self.house_scent_map.par_iter_mut().for_each(|map_| {
             map_.par_map_inplace(|x| {
-                *x *= 0.95;
+                *x *= 0.995;
             })
         });
     }
