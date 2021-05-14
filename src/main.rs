@@ -40,8 +40,8 @@ fn hello(field: &mut crate::field::Field) -> Point {
 
 fn flappy_bird(field: &mut crate::field::Field) -> Point {
     let mut x: u32 = 0;
-    let n = 5;
-    let dx = 800 / n;
+    let n = 7;
+    let dx = 700 / n;
     for i in 0..n {
         x = 50 + rand::random::<u32>() % 300;
         field.add_obsticale(Rect::new(i * dx + 70, 0, 10, x - 50));
@@ -77,7 +77,7 @@ fn main() {
     for _ in 0..10000 {
         my_population.add_ant(start.x, start.y);
     }
-    my_field.paint(&mut canvas, scale);
+    my_field.paint(&mut canvas, scale, false);
     canvas.present();
     let mut event_pump = sdl_context
         .event_pump()
@@ -104,7 +104,13 @@ fn main() {
                     keycode: Some(Keycode::Tab),
                     ..
                 } => {
-                    my_field.paint(&mut canvas, scale);
+                    my_field.paint(&mut canvas, scale, true);
+                }
+                Event::KeyDown {
+                    keycode: Some(Keycode::Backspace),
+                    ..
+                } => {
+                    my_field.paint(&mut canvas, scale, false);
                 }
                 _ => {}
             }

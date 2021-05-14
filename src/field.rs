@@ -116,33 +116,35 @@ impl Field {
         }
     }
 
-    pub fn paint(&self, canvas: &mut Canvas<Window>, scale: i32) {
+    pub fn paint(&self, canvas: &mut Canvas<Window>, scale: i32, draw_heat_map : bool) {
         canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 0));
         canvas.clear();
-        let mut food_heat_map: arr2<f64> = arr2::<f64>::zeros((self.width, self.height));
-        let mut house_heat_map: arr2<f64> = arr2::<f64>::zeros((self.width, self.height));
-        for i in 0..8 {
-            food_heat_map += &self.food_scent_map[i];
-            house_heat_map += &self.house_scent_map[i];
-        }
-        for h in 0..self.height {
-            for w in 0..self.width {
-                let food_color = scent_to_color(food_heat_map[[w, h]]);
-                let house_color = scent_to_color(house_heat_map[[w, h]]);
-                let red = if food_color > house_color {
-                    food_color
-                } else {
-                    house_color
-                };
-                let blue = house_color;
-                let green = food_color;
-                canvas.set_draw_color(sdl2::pixels::Color::RGB(red, green, blue));
-                canvas.fill_rect(Rect::new(
-                    w as i32 * scale,
-                    h as i32 * scale,
-                    scale as u32,
-                    scale as u32,
-                ));
+        if draw_heat_map {
+            let mut food_heat_map: arr2<f64> = arr2::<f64>::zeros((self.width, self.height));
+            let mut house_heat_map: arr2<f64> = arr2::<f64>::zeros((self.width, self.height));
+            for i in 0..8 {
+                food_heat_map += &self.food_scent_map[i];
+                house_heat_map += &self.house_scent_map[i];
+            }
+            for h in 0..self.height {
+                for w in 0..self.width {
+                    let food_color = scent_to_color(food_heat_map[[w, h]]);
+                    let house_color = scent_to_color(house_heat_map[[w, h]]);
+                    let red = if food_color > house_color {
+                        food_color
+                    } else {
+                        house_color
+                    };
+                    let blue = house_color;
+                    let green = food_color;
+                    canvas.set_draw_color(sdl2::pixels::Color::RGB(red, green, blue));
+                    canvas.fill_rect(Rect::new(
+                        w as i32 * scale,
+                        h as i32 * scale,
+                        scale as u32,
+                        scale as u32,
+                    ));
+                }
             }
         }
         canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 255));

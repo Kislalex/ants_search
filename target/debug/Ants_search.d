@@ -1,0 +1,1 @@
+/home/kaa/Documents/Coding/git/ants_search/target/debug/Ants_search: /home/kaa/Documents/Coding/git/ants_search/src/ants.rs /home/kaa/Documents/Coding/git/ants_search/src/field.rs /home/kaa/Documents/Coding/git/ants_search/src/main.rs

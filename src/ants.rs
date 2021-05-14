@@ -241,7 +241,6 @@ impl Population {
                     ant.point = newborn_position;
                     ant.distance_passed = 1.0;
                     ant.has_food = false;
-                    ant.is_random = (rand::random::<usize>() % 1000) < 100;
                     ant.left_house = false;
                 }
             });
