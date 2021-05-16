@@ -50,4 +50,4 @@ Afterwards you can find binary executable file in "/ants_search/target/degub/"
  
  1. Escape to exit the app. 
  2. Tab to draw ants scent.
- 3. Clear the map of ants scent.
+ 3. Backspase to clear the map of ants scent.
