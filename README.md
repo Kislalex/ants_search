@@ -44,4 +44,10 @@ Afterwards you can find binary executable file in "/ants_search/target/degub/"
 
     into your cargo project, right next to your Cargo.toml.
 
- 5. When you're shipping your game make sure to copy SDL2.dll to the same directory that your compiled exe is in, otherwise the game won't launch.
+5. When you're shipping your game make sure to copy SDL2.dll to the same directory that your compiled exe is in, otherwise the game won't launch.
+
+ ### In-app Key-binds
+ 
+ 1. Escape to exit the app. 
+ 2. Tab to draw ants scent.
+ 3. Clear the map of ants scent.
